@@ -2,16 +2,18 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Hello World</title>
-    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <title>Markdown Previewer</title>
+    <!-- remove in produ -->
+    <script src="./react-dev/react-0.14.3.js"></script>
+    <script src="./react-dev/react-dom-0.14.3.js"></script>
     
     <!-- Don't use this in production: -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   </head>
   <body>
+    <script type="text/javascript" src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
     <div id="root"></div>
-    <script type="text/babel" src="script.js"/>
+    <script type="text/babel" src="script.jsx"/>
     <!--
       Note: this page is a great way to try React but it's not suitable for production.
       It slowly compiles JSX with Babel in the browser and uses a large development build of React.
@@ -25,5 +27,8 @@
       You can also use React without JSX, in which case you can remove Babel:
       https://reactjs.org/docs/react-without-jsx.html
     -->
+
+    <!-- test-suite -->
+
   </body>
 </html>
