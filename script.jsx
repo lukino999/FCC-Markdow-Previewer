@@ -21,7 +21,7 @@ class App extends React.Component {
 		"## SubHeader",
 		"[Google](https://www.google.com)\n",
 		"Inline `code`",
-		"```javascript", "var s = \"JavaScript syntax highlighting\";\n\nalert(s);" ,"```",
+		"```javascript", "var s = \"JavaScript syntax highlighting\";\nalert(s);" ,"```",
 		"1. List item",
 		"\n\n> Blockquotes are very handy in email to emulate reply text.",
 		"\n![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png \"Logo Title Text 1\")",
@@ -31,16 +31,30 @@ class App extends React.Component {
 		});
 	}
 
+
+	///////////////////////
 	render() {
 		return (
-			<div>
-			<Header />
-			<Editor handleChange={this.handleChange} input={this.state.input} />
-			<Preview input={this.state.input}/>
+			<div className="w-100 h-100">
+				<Header />
+				<nav className="navbar navbar-expand-lg navbar-light bg-primary">
+					<div className="container">
+						<h1>Markdown previewer</h1>
+					</div>
+				</nav>
+				<div className="row w-100 h-75">
+					<Editor handleChange={this.handleChange} input={this.state.input}/>
+					<Preview input={this.state.input}/>
+				</div>
 			</div>
 			);
 	}
 }
+
+
+
+
+
 
 
 
@@ -51,12 +65,22 @@ class Header extends React.Component {
 
 	render() {
 		return (
-			<div>
-			<h1>Markdown Previewer</h1>
-			</div>
+			<nav className="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
+				<div className="container">
+					<h1>Markdown previewer</h1>
+				</div>
+			</nav>
 			);
 	}
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -67,7 +91,7 @@ class Editor extends React.Component {
 
 	render() {
 		return (
-			<textarea id="editor" onChange={this.props.handleChange} value={this.props.input}/>
+			<textarea className="col" id="editor" onChange={this.props.handleChange} value={this.props.input}/>
 			);
 	}
 }
@@ -97,7 +121,11 @@ class Preview extends React.Component {
 		// todo: fiddle with options and add syntax higlighting
 
 		return (
-			<div id="preview" dangerouslySetInnerHTML={rawMarkup}/>
+			<div 
+				className="col "
+				id="preview"
+				dangerouslySetInnerHTML={rawMarkup}
+				/>
 			);
 	}
 }
