@@ -9,7 +9,6 @@ class App extends React.Component {
 	}
 
 	handleChange(event) {
-		console.log(event.target.value);
 		this.setState({
 			input: event.target.value
 		});
@@ -22,9 +21,9 @@ class App extends React.Component {
 		"## SubHeader",
 		"[Google](https://www.google.com)\n",
 		"Inline `code`",
-		"```", "var s = \"JavaScript syntax highlighting\";\n\nalert(s);" ,"```",
+		"```javascript", "var s = \"JavaScript syntax highlighting\";\n\nalert(s);" ,"```",
 		"1. List item",
-		"> Blockquotes are very handy in email to emulate reply text.",
+		"\n\n> Blockquotes are very handy in email to emulate reply text.",
 		"\n![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png \"Logo Title Text 1\")",
 		"\nStrong emphasis, aka bold, with **asterisks** or __underscores__."]
 		this.setState({
@@ -35,9 +34,9 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<Header />
-				<Editor handleChange={this.handleChange} input={this.state.input} />
-				<Preview input={this.state.input}/>
+			<Header />
+			<Editor handleChange={this.handleChange} input={this.state.input} />
+			<Preview input={this.state.input}/>
 			</div>
 			);
 	}
@@ -53,9 +52,9 @@ class Header extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1>Markdown Previewer</h1>
+			<h1>Markdown Previewer</h1>
 			</div>
-		);
+			);
 	}
 }
 
@@ -81,12 +80,25 @@ class Preview extends React.Component {
 	}
 
 	render() {
-		const rawMarkup = { __html:  marked(this.props.input, {sanitize: true})};
+		// markdown options
+		marked.setOptions({
+			sanitise: true,
+			gfm: true,
+			bullshit: true,
+			breaks: true,
+			highlight: function(code, language) {
+				// const hljs = require('highlight.js');
+				const validLanguage = hljs.getLanguage(language) ? language : 'plaintext';
+				return hljs.highlight(validLanguage, code).value;
+			}
+		});
+		const rawMarkup = { __html:  marked(this.props.input)};
+
 		// todo: fiddle with options and add syntax higlighting
 
 		return (
 			<div id="preview" dangerouslySetInnerHTML={rawMarkup}/>
-		);
+			);
 	}
 }
 
