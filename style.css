@@ -5,4 +5,5 @@ html, body {
 
 code, pre {
   background-color: #ddd; 
+  width: auto;
 }

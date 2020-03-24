@@ -37,11 +37,14 @@ class App extends React.Component {
 		return (
 			<div className="w-100 h-100">
 				<Header />
+			{/* extra nav to add top-padding */}
 				<nav className="navbar navbar-expand-lg navbar-light bg-primary">
 					<div className="container">
-						<h1>Markdown previewer</h1>
+						<h1>.</h1>
 					</div>
 				</nav>
+
+				
 				<div className="row w-100 h-75">
 					<Editor handleChange={this.handleChange} input={this.state.input}/>
 					<Preview input={this.state.input}/>
@@ -98,6 +101,12 @@ class Editor extends React.Component {
 
 
 
+
+
+
+
+
+
 class Preview extends React.Component {
 	constructor(props) {
 		super(props);
@@ -111,14 +120,11 @@ class Preview extends React.Component {
 			bullshit: true,
 			breaks: true,
 			highlight: function(code, language) {
-				// const hljs = require('highlight.js');
 				const validLanguage = hljs.getLanguage(language) ? language : 'plaintext';
 				return hljs.highlight(validLanguage, code).value;
 			}
 		});
 		const rawMarkup = { __html:  marked(this.props.input)};
-
-		// todo: fiddle with options and add syntax higlighting
 
 		return (
 			<div 
@@ -129,6 +135,10 @@ class Preview extends React.Component {
 			);
 	}
 }
+
+
+
+
 
 
 // render
