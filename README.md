@@ -1,11 +1,11 @@
-# Pomodoro Clock
+# Markdown Previewer
 ## [Live on Github Pages](https://lukino999.github.io/FCC-Markdow-Previewer/)
 <hr>
 <hr>
 
 ### FreeCodeCamp assignment:
 
-#### Front End Libraries Projects - Build a Pomodoro Clock
+#### Front End Libraries Projects - Build a Markdown Previewer
 Objective: Build a web app that is functionally similar to this: https://codepen.io/freeCodeCamp/full/GrZVVO.
 
 Fulfill the below user stories and get all of the tests to pass. Give it your own personal style.
